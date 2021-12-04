@@ -40,4 +40,10 @@ public class GreetingService {
         greetingAppEntity.setContent(greeting.getContent());
         return greetingRepo.save(greetingAppEntity);
     }
+
+    public GreetingAppEntity deleteGreeting(int id) {
+        GreetingAppEntity greetingAppEntity = greetingRepo.findById(id).get();
+        greetingRepo.delete(greetingAppEntity);
+        return greetingAppEntity;
+    }
 }

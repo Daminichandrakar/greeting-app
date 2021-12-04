@@ -75,4 +75,9 @@ public class GreetingController {
         return greetingService.updateGreeting(id, greeting);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public GreetingAppEntity deleteGreting(@PathVariable int id) {
+        return greetingService.deleteGreeting(id);
+    }
+
 }
