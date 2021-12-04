@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
 
 @Service
 public class GreetingService {
@@ -15,7 +16,7 @@ public class GreetingService {
     @Autowired
     private GreetingRepo greetingRepo;
 
-    public String  getGreeting() {
+    public String getGreeting() {
         return "Hello World";
     }
 
@@ -27,11 +28,16 @@ public class GreetingService {
 
     public GreetingAppEntity getGreetingById(int id) {
         GreetingAppEntity greetingAppEntity = greetingRepo.findById(id).get();
-            return greetingAppEntity;
+        return greetingAppEntity;
     }
 
     public List<GreetingAppEntity> greetings() {
         return greetingRepo.findAll();
     }
 
+    public GreetingAppEntity updateGreeting(int id, Greeting greeting) {
+        GreetingAppEntity greetingAppEntity = greetingRepo.findById(id).get();
+        greetingAppEntity.setContent(greeting.getContent());
+        return greetingRepo.save(greetingAppEntity);
+    }
 }
