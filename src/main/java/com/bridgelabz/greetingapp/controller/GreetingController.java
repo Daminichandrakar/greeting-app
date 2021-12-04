@@ -56,4 +56,9 @@ public class GreetingController {
         return greetingService.addGreeting(greeting);
     }
 
+    @GetMapping(value="/get-greeting-by-id")
+    public GreetingAppEntity getGreetingById(@RequestParam int id){
+        return  greetingService.getGreetingById(id);
+    }
+
 }

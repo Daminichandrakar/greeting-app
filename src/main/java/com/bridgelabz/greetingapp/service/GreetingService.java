@@ -24,4 +24,9 @@ public class GreetingService {
         return greetingRepo.save(greetingAppEntity);
     }
 
+    public GreetingAppEntity getGreetingById(int id) {
+        GreetingAppEntity greetingAppEntity = greetingRepo.findById(id).get();
+            return greetingAppEntity;
+    }
+
 }
