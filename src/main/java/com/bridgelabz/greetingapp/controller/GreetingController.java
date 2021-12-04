@@ -6,6 +6,8 @@ import com.bridgelabz.greetingapp.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Purpose : Create RestController demonstrate different Http methods
  *
@@ -61,4 +63,8 @@ public class GreetingController {
         return  greetingService.getGreetingById(id);
     }
 
+    @GetMapping(value="/get-all-messages")
+    public List<GreetingAppEntity> getAllGreetings(){
+        return  greetingService.greetings();
+    }
 }
