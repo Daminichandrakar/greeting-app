@@ -42,18 +42,18 @@ public class GreetingController {
         return greetingService.getGreeting();
     }
 
-    @GetMapping("/greeting6")
-    public String getGreetingUsingQueryParameter(
-            @RequestParam String firstName,
-            @RequestParam String lastName
-    ) {
+    @GetMapping("/get-greeting")
+    public String getGreetingWithName(
+            @RequestParam (value = "firstName", defaultValue = "Dear") String firstName,
+            @RequestParam (value = "laststName", defaultValue = "Ma'm/Sir") String lastName) {
         return greetingService.getGreeting() + " , " + firstName + " " + lastName;
     }
 
-    @PostMapping("/greeting-message")
+    @PostMapping("/add-greeting")
     public GreetingAppEntity addGreeting(
             @RequestBody Greeting greeting
     ) {
         return greetingService.addGreeting(greeting);
     }
+
 }

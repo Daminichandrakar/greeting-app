@@ -6,6 +6,8 @@ import com.bridgelabz.greetingapp.repository.GreetingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class GreetingService {
 
@@ -21,4 +23,5 @@ public class GreetingService {
         greetingAppEntity.setContent(greeting.getContent());
         return greetingRepo.save(greetingAppEntity);
     }
+
 }
