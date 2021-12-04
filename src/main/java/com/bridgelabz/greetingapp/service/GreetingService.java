@@ -1,18 +1,24 @@
 package com.bridgelabz.greetingapp.service;
 
 import com.bridgelabz.greetingapp.dto.Greeting;
+import com.bridgelabz.greetingapp.entity.GreetingAppEntity;
+import com.bridgelabz.greetingapp.repository.GreetingRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class GreetingService {
 
-    private static final String template = "%s%s %s";
-    private final AtomicLong counter = new AtomicLong();
+    @Autowired
+    private GreetingRepo greetingRepo;
 
-    public Greeting getGreeting(String firstName,String lastName,String content) {
-        return new Greeting(counter.incrementAndGet(),String.format(template,firstName,lastName,content));
+    public String  getGreeting() {
+        return "Hello World";
     }
 
+    public GreetingAppEntity addGreeting(Greeting greeting) {
+        GreetingAppEntity greetingAppEntity = new GreetingAppEntity();
+        greetingAppEntity.setContent(greeting.getContent());
+        return greetingRepo.save(greetingAppEntity);
+    }
 }
